@@ -2,7 +2,9 @@ package br.com.altamira.data.wbccad.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -117,6 +119,15 @@ public class OrcItm implements Serializable {
 	private List<OrcDet> orcdet;
 	
 	public OrcItm() {
+	}
+
+	public OrcItm(String numeroOrcamento, Integer orcitmGrupo,
+			String orcitmSubgrupo, String orcitmItem) {
+		super();
+		this.numeroOrcamento = numeroOrcamento;
+		this.orcitmGrupo = orcitmGrupo;
+		this.orcitmSubgrupo = orcitmSubgrupo;
+		this.orcitmItem = orcitmItem;
 	}
 
 	public Integer getIdOrcItm() {
@@ -388,4 +399,102 @@ public class OrcItm implements Serializable {
 		return buf.toString();
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((numeroOrcamento == null) ? 0 : numeroOrcamento.trim().hashCode());
+		result = prime * result
+				+ ((orcitmGrupo == null) ? 0 : orcitmGrupo.hashCode());
+		result = prime * result;
+		if (orcitmItem != null) {
+			try {
+				result += new Integer(orcitmItem.trim()).toString().hashCode();
+			} catch(NumberFormatException e) {
+				result += orcitmItem.trim().hashCode();
+			}
+		}
+		result = prime * result;
+		if (orcitmSubgrupo != null) {
+			try {
+				result += new Integer(orcitmSubgrupo.trim()).toString().hashCode();
+			} catch(NumberFormatException e) {
+				result += orcitmSubgrupo.trim().hashCode();
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OrcItm other = (OrcItm) obj;
+		if (numeroOrcamento == null) {
+			if (other.numeroOrcamento != null)
+				return false;
+		} else if (!numeroOrcamento.trim().equals(other.numeroOrcamento.trim()))
+			return false;
+		if (orcitmGrupo == null) {
+			if (other.orcitmGrupo != null)
+				return false;
+		} else if (!orcitmGrupo.equals(other.orcitmGrupo))
+			return false;
+		if (orcitmItem == null) {
+			if (other.orcitmItem != null)
+				return false;
+		} else {
+			if (!orcitmItem.trim().equals(other.orcitmItem.trim())) {
+				/**
+				 *  se diferente tenta converter e comparar inteiros
+				 *  porque na tabela INTEGRACAO_ORCITM este campo vem como inteiro
+				 *  Ex: '01' <> '1'
+				 */
+				try {
+					int n1 = Integer.parseInt(orcitmItem);
+					int n2 = Integer.parseInt(other.orcitmItem);
+					if (n1 != n2)
+						return false;
+				} catch(NumberFormatException e) {
+					return false;
+				}
+			}
+		}
+		if (orcitmSubgrupo == null) {
+			if (other.orcitmSubgrupo != null)
+				return false;
+		} else {
+			if (!orcitmSubgrupo.trim().equals(other.orcitmSubgrupo.trim())) {
+
+				/**
+				 *  se diferente tenta converter e comparar inteiros
+				 *  porque na tabela INTEGRACAO_ORCITM este campo vem como inteiro
+				 *  Ex: '01' <> '1'
+				 */
+				try {
+					int n1 = Integer.parseInt(orcitmSubgrupo);
+					int n2 = Integer.parseInt(other.orcitmSubgrupo);
+					if (n1 != n2)
+						return false;
+				} catch(NumberFormatException e) {
+					return false;
+				}
+			}
+		}
+			
+		return true;
+	}
+	
+	public static <T> boolean hasDuplicate(Iterable<T> all) {
+	    Set<T> set = new HashSet<T>();
+	    // Set#add returns false if the set does not change, which
+	    // indicates that a duplicate element has been added.
+	    for (T each: all) if (!set.add(each)) return true;
+	    return false;
+	}
 }

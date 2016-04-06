@@ -2,7 +2,6 @@ package br.com.altamira.data.wbccad.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -329,19 +328,19 @@ public class OrcDet implements Serializable {
 	}
 
 	public String getOrcdetCodigo() {
-		return this.orcdetCodigo;
+		return this.orcdetCodigo.trim().toUpperCase();
 	}
 
 	public void setOrcdetCodigo(String orcdetCodigo) {
-		this.orcdetCodigo = orcdetCodigo;
+		this.orcdetCodigo = orcdetCodigo.trim().toUpperCase();
 	}
 
 	public String getOrcdetCodigoOri() {
-		return this.orcdetCodigoOri;
+		return this.orcdetCodigoOri.trim().toUpperCase();
 	}
 
 	public void setOrcdetCodigoOri(String orcdetCodigoOri) {
-		this.orcdetCodigoOri = orcdetCodigoOri;
+		this.orcdetCodigoOri = orcdetCodigoOri.trim().toUpperCase();
 	}
 
 	public BigDecimal getOrcdet_Comprimento() {

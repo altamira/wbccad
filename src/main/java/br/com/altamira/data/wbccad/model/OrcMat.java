@@ -3,7 +3,9 @@ package br.com.altamira.data.wbccad.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -193,6 +195,12 @@ public class OrcMat implements Serializable {
 	public OrcMat() {
 	}
 
+	public OrcMat(String orcmatCodigo, String orcmatDescricao) {
+		super();
+		this.orcmatCodigo = orcmatCodigo;
+		this.orcmatDescricao = orcmatDescricao;
+	}
+
 	public OrcMatPK getId() {
 		return this.id;
 	}
@@ -346,19 +354,19 @@ public class OrcMat implements Serializable {
 	}
 
 	public String getOrcmatCodigo() {
-		return this.orcmatCodigo;
+		return this.orcmatCodigo.trim().toUpperCase();
 	}
 
 	public void setOrcmatCodigo(String orcmatCodigo) {
-		this.orcmatCodigo = orcmatCodigo;
+		this.orcmatCodigo = orcmatCodigo.trim().toUpperCase();
 	}
 
 	public String getOrcmatCodigoPai() {
-		return this.orcmatCodigoPai;
+		return this.orcmatCodigoPai.trim().toUpperCase();
 	}
 
 	public void setOrcmatCodigoPai(String orcmatCodigoPai) {
-		this.orcmatCodigoPai = orcmatCodigoPai;
+		this.orcmatCodigoPai = orcmatCodigoPai.trim().toUpperCase();
 	}
 
 	public String getOrcmatCor() {
@@ -662,6 +670,47 @@ public class OrcMat implements Serializable {
 			buf.append(det.toString(margin));
 		}
 		return buf.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((orcmatCodigo == null) ? 0 : orcmatCodigo.hashCode());
+		result = prime * result
+				+ ((orcmatDescricao == null) ? 0 : orcmatDescricao.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OrcMat other = (OrcMat) obj;
+		if (orcmatCodigo == null) {
+			if (other.orcmatCodigo != null)
+				return false;
+		} else if (!orcmatCodigo.equals(other.orcmatCodigo))
+			return false;
+		if (orcmatDescricao == null) {
+			if (other.orcmatDescricao != null)
+				return false;
+		} else if (!orcmatDescricao.equals(other.orcmatDescricao))
+			return false;
+		return true;
+	}
+	
+	public static <T> boolean hasDuplicate(Iterable<T> all) {
+	    Set<T> set = new HashSet<T>();
+	    // Set#add returns false if the set does not change, which
+	    // indicates that a duplicate element has been added.
+	    for (T each: all) if (!set.add(each)) return true;
+	    return false;
 	}
 
 }

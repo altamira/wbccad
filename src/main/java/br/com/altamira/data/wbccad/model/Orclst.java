@@ -689,29 +689,43 @@ public class Orclst implements Serializable {
         this.orclstTotalLista = orclstTotalLista;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (orclstNumero != null ? orclstNumero.hashCode() : 0);
-        return hash;
-    }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Orclst)) {
-            return false;
-        }
-        Orclst other = (Orclst) object;
-        if ((this.orclstNumero == null && other.orclstNumero != null) || (this.orclstNumero != null && !this.orclstNumero.equals(other.orclstNumero))) {
-            return false;
-        }
-        return true;
-    }
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((orclstNumero == null) ? 0 : orclstNumero.hashCode());
+		result = prime * result
+				+ ((orclstRevisao == null) ? 0 : orclstRevisao.hashCode());
+		return result;
+	}
 
-    @Override
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Orclst other = (Orclst) obj;
+		if (orclstNumero == null) {
+			if (other.orclstNumero != null)
+				return false;
+		} else if (!orclstNumero.equals(other.orclstNumero))
+			return false;
+		if (orclstRevisao == null) {
+			if (other.orclstRevisao != null)
+				return false;
+		} else if (!orclstRevisao.equals(other.orclstRevisao))
+			return false;
+		return true;
+	}
+
+	@Override
     public String toString() {
-        return "br.com.altamira.wbccad.model.Orclst[ orclstNumero=" + orclstNumero + " ]";
+        return "Orcamento: [" + orclstNumero + " ]";
     }
     
 }

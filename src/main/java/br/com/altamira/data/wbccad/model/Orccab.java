@@ -402,6 +402,11 @@ public class Orccab implements Serializable {
 	public Orccab() {
 	}
 
+	public Orccab(String numeroOrcamento, String orccab_cliente_Nome) {
+		this.numeroOrcamento = numeroOrcamento;
+		this.orccab_cliente_Nome = orccab_cliente_Nome;
+	}
+	
 	public String getNumeroOrcamento() {
 		return this.numeroOrcamento;
 	}
@@ -1431,7 +1436,7 @@ public class Orccab implements Serializable {
 	@Override
 	public String toString() {
 		StringBuffer buf = new StringBuffer();
-		buf.append(String.format("ORCCAB: %s %s\n", this.getNumeroOrcamento().trim(), this.getOrccab_cliente_Nome().trim()));
+		buf.append(String.format("ORCCAB: %s %s\n", this.getNumeroOrcamento().trim(), this.getOrccab_cliente_Nome() == null ? "" : this.getOrccab_cliente_Nome().trim()));
 		String margin = " ";
 
 		buf.append(" +-----------------------------------------------------------------------------------------------+\n");
@@ -1458,7 +1463,7 @@ public class Orccab implements Serializable {
 			buf.append(prdorc.toString(margin));
 		}		
 		
-		buf.append(String.format("\n Acessos na tabela PrdOrc: %d\n Quant. Produtos unicos carregados: %d\n Quant. Materiais: %d\n Quant. Items: %d", 
+		buf.append(String.format("\n Acessos na tabela PrdOrc: %d\n Quant. Produtos: %d\n Quant. Materiais: %d\n Quant. Items: %d", 
 				this.getCount(), this.prdOrc.size(), this.orcMat.size(), this.orcItm.size()));
 
 		return buf.toString();		
@@ -1472,5 +1477,39 @@ public class Orccab implements Serializable {
 		this.count++;
 	}
 
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((numeroOrcamento == null) ? 0 : numeroOrcamento.hashCode());
+		result = prime
+				* result
+				+ ((orccab_cliente_Nome == null) ? 0 : orccab_cliente_Nome
+						.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Orccab other = (Orccab) obj;
+		if (numeroOrcamento == null) {
+			if (other.numeroOrcamento != null)
+				return false;
+		} else if (!numeroOrcamento.equals(other.numeroOrcamento))
+			return false;
+		if (orccab_cliente_Nome == null) {
+			if (other.orccab_cliente_Nome != null)
+				return false;
+		} else if (!orccab_cliente_Nome.equals(other.orccab_cliente_Nome))
+			return false;
+		return true;
+	}
+
 }

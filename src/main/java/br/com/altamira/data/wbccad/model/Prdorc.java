@@ -3,7 +3,9 @@ package br.com.altamira.data.wbccad.model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -200,11 +202,11 @@ public class Prdorc implements Serializable {
 	}
 
 	public String getDescricao() {
-		return this.descricao;
+		return this.descricao.trim().toUpperCase();
 	}
 
 	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+		this.descricao = descricao.trim().toUpperCase();
 	}
 
 	public String getFamilia() {
@@ -456,11 +458,11 @@ public class Prdorc implements Serializable {
 	}
 
 	public String getProduto() {
-		return this.produto;
+		return this.produto.trim().toUpperCase();
 	}
 
 	public void setProduto(String produto) {
-		this.produto = produto;
+		this.produto = produto.trim().toUpperCase();
 	}
 
 	public String getSituacao() {
@@ -503,12 +505,17 @@ public class Prdorc implements Serializable {
 		this.prdest = prdest;
 	}
 	
+	@Override
+	public String toString() {
+		return String.format("%s %s", this.getProduto(), this.getDescricao());
+	}
+	
 	public String toString(String margin) {
 		StringBuffer buf = new StringBuffer();
 		
 		margin = " " + margin;
 
-		buf.append(String.format("%sPRDORC: %s [InstanceID: %s, Ref.Count: %d] %s\n", margin, this.getProduto(), this, this.getRef(), this.getDescricao().trim()));
+		buf.append(String.format("%sPRDORC: [Instance ID: #%s, Ref.Count: %d] %s %s\n", margin, this.hashCode(), this.getRef(), this.getProduto().trim(), this.getDescricao().trim()));
 		
 		for(Prdest prd : this.prdest) {
 			buf.append(prd.toString(" " + margin));
@@ -524,4 +531,43 @@ public class Prdorc implements Serializable {
 		this.ref++;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((descricao == null) ? 0 : descricao.hashCode());
+		result = prime * result + ((produto == null) ? 0 : produto.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Prdorc other = (Prdorc) obj;
+		if (descricao == null) {
+			if (other.descricao != null)
+				return false;
+		} else if (!descricao.equals(other.descricao))
+			return false;
+		if (produto == null) {
+			if (other.produto != null)
+				return false;
+		} else if (!produto.equals(other.produto))
+			return false;
+		return true;
+	}
+	
+	public static <T> boolean hasDuplicate(Iterable<T> all) {
+	    Set<T> set = new HashSet<T>();
+	    // Set#add returns false if the set does not change, which
+	    // indicates that a duplicate element has been added.
+	    for (T each: all) if (!set.add(each)) return true;
+	    return false;
+	}
 }

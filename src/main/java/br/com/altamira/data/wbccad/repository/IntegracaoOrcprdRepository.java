@@ -13,6 +13,8 @@ import br.com.altamira.data.wbccad.model.IntegracaoOrcprd;
 @Transactional(readOnly = true)
 public interface IntegracaoOrcprdRepository extends CrudRepository<IntegracaoOrcprd, String> {
 	
+	List<IntegracaoOrcprd> findAllByOrcnum(String numero);
+	
 	@Query(value = "SELECT ORCNUM, ORCITM, 0 AS GRPCOD, 0 AS SUBGRPCOD, PRDCOD, CORCOD, PRDDSC, SUM(ORCQTD) AS ORCQTD, SUM(ORCTOT) AS ORCTOT, SUM(ORCPES) AS ORCPES, ROW_NUMBER() OVER(ORDER BY ORCNUM DESC) AS IDINTEGRACAO_ORCPRD FROM INTEGRACAO_ORCPRD WHERE ORCNUM = :orcamento AND ORCITM = :item GROUP BY ORCNUM, ORCITM, PRDCOD, CORCOD, PRDDSC", nativeQuery = true)
 	List<IntegracaoOrcprd> findByOrcnumAndOrcitm(String orcamento, Integer item);
 }

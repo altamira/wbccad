@@ -20,7 +20,7 @@ public class PrdestPK implements Serializable {
 	}
 
 	public String getPrdorccodigopai() {
-		return this.prdorccodigopai;
+		return this.prdorccodigopai.trim().toUpperCase();
 	}
 
 	public void setPrdorccodigopai(String prdorccodigopai) {
@@ -28,7 +28,7 @@ public class PrdestPK implements Serializable {
 	}
 
 	public String getPrdorccodigofilho() {
-		return this.prdorccodigofilho;
+		return this.prdorccodigofilho.trim().toUpperCase();
 	}
 
 	public void setPrdorccodigofilho(String prdorccodigofilho) {
