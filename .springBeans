@@ -7,9 +7,10 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
+		<config>java:br.com.altamira.wbccad.EntityManager</config>
+		<config>java:br.com.altamira.wbccad.Application</config>
 	</configs>
 	<autoconfigs>
-		<config>java:br.com.altamira.data.wbccad.Application</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>

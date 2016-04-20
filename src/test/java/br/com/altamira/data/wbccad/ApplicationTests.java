@@ -14,14 +14,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-
-
-//import br.com.altamira.data.wbccad.controller.OrcMatController;
-import br.com.altamira.data.wbccad.controller.OrccabController;
-import br.com.altamira.data.wbccad.exception.PrdorcNotFoundException;
-import br.com.altamira.data.wbccad.model.Orccab;
-import br.com.altamira.data.wbccad.model.Orclst;
-import br.com.altamira.data.wbccad.repository.OrclstRepository;
+import br.com.altamira.wbccad.Application;
+import br.com.altamira.wbccad.controller.OrccabController;
+import br.com.altamira.wbccad.model.Orccab;
+import br.com.altamira.wbccad.model.Orclst;
+import br.com.altamira.wbccad.repository.OrclstRepository;
 
 /*
  Consultas usadas para retornar a estrutura do orcamento
@@ -160,11 +157,14 @@ public class ApplicationTests {
 	@Test
 	public void orccabControllerOneTest() throws Exception {
 		List<String> numeros = Arrays.asList( 
-				"00093214", // 00093214, 23288 produtos
-				"00093280", // Produto não encontrado: PAICAN000N2000000765 CANTONEIRA N2 PAINEL 765MM
-				"00073028", // MOINHO PACIFICO 7 items;
-				"00093306" // ORCNUM COM ESPACO NA TABELA INTEGRACAO_ORCITM, ERRO NA COMPARACAO (RESOLVIDO)
+				//"00093214" // 00093214, 23288 produtos
+				//"00093280" // Produto não encontrado: PAICAN000N2000000765 CANTONEIRA N2 PAINEL 765MM
+				//"00073028" // MOINHO PACIFICO 7 items;
+				//"00093306" // ORCNUM COM ESPACO NA TABELA INTEGRACAO_ORCITM, ERRO NA COMPARACAO (RESOLVIDO)
 				//"00093277" // INCONSISTENCIA NOS DADOS: SUBGRUPO ESTA DIFERENTE NA TABELA INTEGRACAO_ORCITM 
+				//"00084239" // INTEGRACAO_ORCITM diferente
+				//"00092331" //: Produto não encontrado: PPLSIG18120L24000000 LONGARINA SG120 CH1,80 MM F240 MED.1200MM
+				"00093427" // Exception d != java.time.LocalDateTime
 				);
 		
     	numeros.stream().forEach((numero) -> {
@@ -175,7 +175,7 @@ public class ApplicationTests {
 					numero));
 	
 			List<String> ex = new ArrayList<String>();
-			List<String> nf = new ArrayList<String>();
+			List<String> dx = new ArrayList<String>();
 	
 	        try {
 	        	
@@ -185,20 +185,23 @@ public class ApplicationTests {
 	    				numero), orccab);
 	            System.out.println(String.format("--> Teste do orcamento %s, resultado: Ok.",
 	    				orccab.getNumeroOrcamento().trim()));
-	            System.out.println(String.format(" Acessos na tabela PrdOrc: %d\n Quant. Produtos: %d\n Quant. Materiais: %d\n Quant. Items: %d", 
+	            System.out.println(String.format("    Acessos na tabela PrdOrc: %d\n    Quant. Produtos: %d\n    Quant. Materiais: %d\n    Quant. Items: %d", 
 	    				orccab.getCount(), orccab.getPrdOrc().size(), orccab.getOrcMat().size(), orccab.getOrcItm().size()));
 	
-	        } catch(PrdorcNotFoundException e) {
-	        	nf.add(String.format("%s: %s", numero, e.getMessage()));
 	        } catch(Exception e) {
-	        	ex.add(String.format("%s: %s", numero, e.getMessage()));
+	        	//System.out.println("Exception: "+ e.getClass().getPackage().getName());
+	        	if (e.getClass().getPackage().getName().startsWith("br.com.altamira")) {
+	        		dx.add(String.format("%s", e.getMessage()));
+	        	} else {
+	        		ex.add(String.format("%s: %s", numero, e.getMessage()));
+	        	}
 	        }
 	
-	        System.out.println(String.format("\nProdutos não encontrados (%d):", nf.size()));
-	        for(String e : nf) {
+	        System.out.println(String.format("\nInconsistencias encontradas nos dados (%d):", dx.size()));
+	        for(String e : dx) {
 	        	System.out.println(e);
 	        }
-	        System.out.println(String.format("\nOutros erros encontrados (%d):", ex.size()));
+	        System.out.println(String.format("\nOutros erros (%d):", ex.size()));
 	        for(String e : ex) {
 	        	System.out.println(e);
 	        }
@@ -215,7 +218,7 @@ public class ApplicationTests {
 	@Test
 	public void orccabControllerFullTest() throws Exception {
 		List<String> ex = new ArrayList<String>();
-		List<String> nf = new ArrayList<String>();
+		List<String> dx = new ArrayList<String>();
 		List<String> zero = new ArrayList<String>();
 		
 		/**
@@ -227,7 +230,7 @@ public class ApplicationTests {
 				"00093277" // DIFERENCA NOS DADOS: SUBGRUPO ESTA DIFERENTE NA TABELA INTEGRACAO_ORCITM 
 				);
 		
-		Pageable top = new PageRequest(0, 10000);
+		Pageable top = new PageRequest(0, 100);
 		Iterable<Orclst> range = orclstRepository.findAllByOrderByOrclstNumeroDesc(top);
 		
 		int maxPrdorc = 0;
@@ -259,7 +262,7 @@ public class ApplicationTests {
         				numero), orccab);
                 System.out.println(String.format("--> Teste do orcamento %s, resultado: Ok.",
         				orccab.getNumeroOrcamento().trim()));
-                System.out.println(String.format(" Acessos na tabela PrdOrc: %d\n Quant. Produtos: %d\n Quant. Materiais: %d\n Quant. Items: %d", 
+                System.out.println(String.format("    Acessos na tabela PrdOrc: %d\n    Quant. Produtos: %d\n    Quant. Materiais: %d\n    Quant. Items: %d", 
         				orccab.getCount(), orccab.getPrdOrc().size(), orccab.getOrcMat().size(), orccab.getOrcItm().size()));
 
                 if (orccab.getPrdOrc().size() > maxPrdorc) {
@@ -280,16 +283,21 @@ public class ApplicationTests {
                 	System.out.println(String.format("**********  Maior orcamento encontrado: %s, %d items ********************", maxItmOrccab, maxItm));
                 }      
                 
-                if (orccab.getPrdOrc().size() == 0 ||
-            		orccab.getOrcMat().size() == 0 ||
-            		orccab.getOrcItm().size() == 0) {
-                	zero.add(orccab.getNumeroOrcamento().trim());
+                if (orccab.getOrclst() != null && 
+                		orccab.getOrclst().getOrclstStatus() > 20 &&
+                		orccab.getOrclst().getOrclstStatus() < 99 &&
+                		(orccab.getPrdOrc().size() == 0 ||
+	            		orccab.getOrcMat().size() == 0 ||
+	            		orccab.getOrcItm().size() == 0)) {
+                	zero.add(String.format("%s, cadastro: %s, situação: %d, %s", orccab.getNumeroOrcamento().trim(), orccab.getOrccab_Cadastro() == null ? "?" : orccab.getOrccab_Cadastro().toString(), orccab.getOrclst().getOrclstStatus(), orccab.getOrccab_cliente_Nome()));
                 }
                 
-            } catch(PrdorcNotFoundException e) {
-            	nf.add(String.format("%s: %s", numero, e.getMessage()));
-            } catch(Exception e) {
-            	ex.add(String.format("%s: %s", numero, e.getMessage()));
+	        } catch(Exception e) {
+	        	if (e.getClass().getPackage().getName().startsWith("br.com.altamira")) {
+	        		dx.add(String.format("%s", e.getMessage()));
+	        	} else {
+	        		ex.add(String.format("%s: %s", numero, e.getMessage()));
+	        	}
             }
 
         }
@@ -297,15 +305,15 @@ public class ApplicationTests {
         System.out.println(String.format("Maior orcamento encontrado: %s, %d materiais", maxMatOrccab, maxMat));
         System.out.println(String.format("Maior orcamento encontrado: %s, %d items", maxItmOrccab, maxItm));
         
-        System.out.println(String.format("\nProdutos não encontrados (%d):", nf.size()));
-        for(String e : nf) {
+        System.out.println(String.format("\nInconsistencia encontradas nos dados (%d):", dx.size()));
+        for(String e : dx) {
         	System.out.println(e);
         }
         System.out.println(String.format("\nOutros erros encontrados (%d):", ex.size()));
         for(String e : ex) {
         	System.out.println(e);
         }
-        System.out.println(String.format("\nOrcamentos vazios, sem nenhum item/produto/material (%d):", zero.size()));
+        System.out.println(String.format("\nOrcamentos vazios/incompletos (sem nenhum item/produto/material) (%d):", zero.size()));
         for(String e : zero) {
         	System.out.println(e);
         }
