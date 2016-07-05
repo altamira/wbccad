@@ -27,7 +27,7 @@ public class EntityManager {
 
 	@Primary
 	@Bean(name = "DataSource")
-	@ConfigurationProperties(prefix = "datasource.wbccad")
+	@ConfigurationProperties(prefix = "datasource")
 	public DataSource DataSource() {
 		return DataSourceBuilder.create().build();
 	}

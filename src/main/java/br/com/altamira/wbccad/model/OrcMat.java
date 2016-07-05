@@ -403,7 +403,7 @@ public class OrcMat implements Serializable {
 	}
 
 	public String getOrcmatCor() {
-		return this.orcmatCor.trim().toUpperCase();
+		return this.orcmatCor == null ? null : this.orcmatCor.trim().toUpperCase();
 	}
 
 	public void setOrcmatCor(String orcmatCor) {
@@ -411,7 +411,7 @@ public class OrcMat implements Serializable {
 	}
 
 	public String getOrcmatDescricao() {
-		return this.orcmatDescricao.trim().toUpperCase();
+		return this.orcmatDescricao == null ? null : this.orcmatDescricao.trim().toUpperCase();
 	}
 
 	public void setOrcmatDescricao(String orcmatDescricao) {

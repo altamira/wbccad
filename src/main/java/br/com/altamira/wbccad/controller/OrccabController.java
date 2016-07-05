@@ -8,9 +8,14 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.http.HttpStatus;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import br.com.altamira.wbccad.exception.OrcItmHasDifferenceException;
 import br.com.altamira.wbccad.exception.OrcItmHasDuplicateException;
@@ -41,8 +46,14 @@ import br.com.altamira.wbccad.repository.OrcitmRepository;
 import br.com.altamira.wbccad.repository.OrclstRepository;
 import br.com.altamira.wbccad.repository.PrdestRepository;
 import br.com.altamira.wbccad.repository.PrdorcRepository;
+/*import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;*/
 
-@Controller
+//@Controller
+@RestController
+@RequestMapping("/wbccad/orccab")
 public class OrccabController {
 
 	@Autowired
@@ -78,8 +89,19 @@ public class OrccabController {
 	@Autowired
 	private IntegracaoOrcprdarvRepository integracaoOrcprdarvRepository;
 	
+	@RequestMapping(value = "{numero}", method = RequestMethod.GET, produces = "application/json")
+    //@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public Orccab get(@PathVariable("numero") String numero) throws Exception {
+		return this.export(numero);
+	}
+	
 	@JmsListener(destination = "/wbccad/orccab/v1/request")
 	@SendTo("/wbccad/orccab/v1/response")
+	public Orccab send(String numero) throws Exception {
+		return this.export(numero);
+	}
+	
 	public Orccab export(String numero) throws Exception {
 		Orccab orccab = null;
 
