@@ -25,7 +25,7 @@ public class OrcDet implements Serializable {
 	@Column(name="ORCDET_COUNTER")
 	private Integer orcdetCounter;
 
-	private String controleCad;
+	/*private String controleCad;
 
 	@Column(name="dep_alt")
 	private Boolean depAlt;
@@ -40,7 +40,7 @@ public class OrcDet implements Serializable {
 	private String departamento;
 
 	@Column(name="IDCJTO")
-	private Integer idcjto;
+	private Integer idcjto;*/
 
 	@Column(name="MATERIALEXTRA")
 	private Integer materialextra;
@@ -50,7 +50,7 @@ public class OrcDet implements Serializable {
 	@Column(name="orcdet_acessorio")
 	private String orcdetAcessorio;
 
-	@Column(name="ORCDET_AGRUPAMENTO")
+	/*@Column(name="ORCDET_AGRUPAMENTO")
 	private String orcdetAgrupamento;
 
 	private BigDecimal orcdet_Altura;
@@ -59,7 +59,7 @@ public class OrcDet implements Serializable {
 	private Double orcdetArea;
 
 	@Column(name="orcdet_chb")
-	private String orcdetChb;
+	private String orcdetChb;*/
 
 	@Column(name="orcdet_codigo")
 	private String orcdetCodigo;
@@ -67,12 +67,12 @@ public class OrcDet implements Serializable {
 	@Column(name="ORCDET_CODIGO_ORI")
 	private String orcdetCodigoOri;
 
-	private BigDecimal orcdet_Comprimento;
+	/*private BigDecimal orcdet_Comprimento;*/
 
 	@Column(name="orcdet_cor")
 	private String orcdetCor;
 
-	@Column(name="ORCDET_CORESADC")
+	/*@Column(name="ORCDET_CORESADC")
 	private String orcdetCoresadc;
 
 	@Column(name="orcdet_corte")
@@ -94,7 +94,7 @@ public class OrcDet implements Serializable {
 	private Boolean orcdetFlagImprimir;
 
 	@Column(name="orcdet_flag_suprimir")
-	private Boolean orcdetFlagSuprimir;
+	private Boolean orcdetFlagSuprimir;*/
 
 	@Column(name="orcdet_grupo")
 	private Integer orcdetGrupo;
@@ -105,8 +105,8 @@ public class OrcDet implements Serializable {
 	@Column(name="orcdet_item")
 	private String orcdetItem;
 
-	@Column(name="ORCDET_KCAL")
-	private BigDecimal orcdetKcal;
+	/*@Column(name="ORCDET_KCAL")
+	private BigDecimal orcdetKcal;*/
 
 	@Column(name="orcdet_nr_seq")
 	private Integer orcdetNrSeq;
@@ -117,13 +117,13 @@ public class OrcDet implements Serializable {
 	@Column(name="orcdet_obs")
 	private String orcdetObs;
 
-	@Column(name="orcdet_onde_incluir")
-	private String orcdetOndeIncluir;
+	/*@Column(name="orcdet_onde_incluir")
+	private String orcdetOndeIncluir;*/
 
 	@Column(name="orcdet_peso")
 	private BigDecimal orcdetPeso;
 
-	@Column(name="ORCDET_PRC_ALTURA")
+	/*@Column(name="ORCDET_PRC_ALTURA")
 	private Integer orcdetPrcAltura;
 
 	@Column(name="ORCDET_PRC_COMPRIMENTO")
@@ -141,7 +141,7 @@ public class OrcDet implements Serializable {
 	@Column(name="orcdet_preco_lista")
 	private BigDecimal orcdetPrecoLista;
 
-	private BigDecimal orcdet_Profundidade;
+	private BigDecimal orcdet_Profundidade;*/
 
 	@Column(name="orcdet_qtde")
 	private Double orcdetQtde;
@@ -149,7 +149,7 @@ public class OrcDet implements Serializable {
 	@Column(name="orcdet_subgrupo")
 	private String orcdetSubgrupo;
 
-	@Column(name="ORCDETBASALT")
+	/*@Column(name="ORCDETBASALT")
 	private BigDecimal orcdetbasalt;
 
 	private String orcdetbase;
@@ -206,7 +206,7 @@ public class OrcDet implements Serializable {
 
 	private String vizfinal;
 
-	private String vizinicial;
+	private String vizinicial;*/
 
 	@OneToOne
 	@Transient
@@ -223,7 +223,7 @@ public class OrcDet implements Serializable {
 		this.orcdetCounter = orcdetCounter;
 	}
 
-	public String getControleCad() {
+	/*public String getControleCad() {
 		return this.controleCad;
 	}
 
@@ -269,7 +269,7 @@ public class OrcDet implements Serializable {
 
 	public void setIdcjto(Integer idcjto) {
 		this.idcjto = idcjto;
-	}
+	}*/
 
 	public Integer getMaterialextra() {
 		return this.materialextra;
@@ -295,7 +295,7 @@ public class OrcDet implements Serializable {
 		this.orcdetAcessorio = orcdetAcessorio.trim().toUpperCase();
 	}
 
-	public String getOrcdetAgrupamento() {
+	/*public String getOrcdetAgrupamento() {
 		return this.orcdetAgrupamento;
 	}
 
@@ -325,7 +325,7 @@ public class OrcDet implements Serializable {
 
 	public void setOrcdetChb(String orcdetChb) {
 		this.orcdetChb = orcdetChb;
-	}
+	}*/
 
 	public String getOrcdetCodigo() {
 		return this.orcdetCodigo.trim().toUpperCase();
@@ -343,13 +343,13 @@ public class OrcDet implements Serializable {
 		this.orcdetCodigoOri = orcdetCodigoOri.trim().toUpperCase();
 	}
 
-	public BigDecimal getOrcdet_Comprimento() {
+	/*public BigDecimal getOrcdet_Comprimento() {
 		return this.orcdet_Comprimento;
 	}
 
 	public void setOrcdet_Comprimento(BigDecimal orcdet_Comprimento) {
 		this.orcdet_Comprimento = orcdet_Comprimento;
-	}
+	}*/
 
 	public String getOrcdetCor() {
 		return this.orcdetCor;
@@ -359,7 +359,7 @@ public class OrcDet implements Serializable {
 		this.orcdetCor = orcdetCor;
 	}
 
-	public String getOrcdetCoresadc() {
+	/*public String getOrcdetCoresadc() {
 		return this.orcdetCoresadc;
 	}
 
@@ -421,7 +421,7 @@ public class OrcDet implements Serializable {
 
 	public void setOrcdetFlagSuprimir(Boolean orcdetFlagSuprimir) {
 		this.orcdetFlagSuprimir = orcdetFlagSuprimir;
-	}
+	}*/
 
 	public Integer getOrcdetGrupo() {
 		return this.orcdetGrupo;
@@ -447,13 +447,13 @@ public class OrcDet implements Serializable {
 		this.orcdetItem = orcdetItem;
 	}
 
-	public BigDecimal getOrcdetKcal() {
+	/*public BigDecimal getOrcdetKcal() {
 		return this.orcdetKcal;
 	}
 
 	public void setOrcdetKcal(BigDecimal orcdetKcal) {
 		this.orcdetKcal = orcdetKcal;
-	}
+	}*/
 
 	public Integer getOrcdetNrSeq() {
 		return this.orcdetNrSeq;
@@ -479,13 +479,13 @@ public class OrcDet implements Serializable {
 		this.orcdetObs = orcdetObs;
 	}
 
-	public String getOrcdetOndeIncluir() {
+	/*public String getOrcdetOndeIncluir() {
 		return this.orcdetOndeIncluir;
 	}
 
 	public void setOrcdetOndeIncluir(String orcdetOndeIncluir) {
 		this.orcdetOndeIncluir = orcdetOndeIncluir;
-	}
+	}*/
 
 	public BigDecimal getOrcdetPeso() {
 		return this.orcdetPeso;
@@ -495,7 +495,7 @@ public class OrcDet implements Serializable {
 		this.orcdetPeso = orcdetPeso;
 	}
 
-	public Integer getOrcdetPrcAltura() {
+	/*public Integer getOrcdetPrcAltura() {
 		return this.orcdetPrcAltura;
 	}
 
@@ -549,7 +549,7 @@ public class OrcDet implements Serializable {
 
 	public void setOrcdet_Profundidade(BigDecimal orcdet_Profundidade) {
 		this.orcdet_Profundidade = orcdet_Profundidade;
-	}
+	}*/
 
 	public Double getOrcdetQtde() {
 		return this.orcdetQtde;
@@ -567,7 +567,7 @@ public class OrcDet implements Serializable {
 		this.orcdetSubgrupo = orcdetSubgrupo;
 	}
 
-	public BigDecimal getOrcdetbasalt() {
+	/*public BigDecimal getOrcdetbasalt() {
 		return this.orcdetbasalt;
 	}
 
@@ -741,7 +741,7 @@ public class OrcDet implements Serializable {
 
 	public void setVizinicial(String vizinicial) {
 		this.vizinicial = vizinicial;
-	}
+	}*/
 
 	public Prdorc getPrdorc() {
 		return prdorc;

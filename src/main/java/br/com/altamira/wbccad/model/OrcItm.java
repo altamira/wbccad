@@ -28,7 +28,7 @@ public class OrcItm implements Serializable {
 
 	private String numeroOrcamento;
 
-	@Column(name="orcitm_altura")
+	/*@Column(name="orcitm_altura")
 	private BigDecimal orcitmAltura;
 
 	@Column(name="orcitm_comprimento")
@@ -50,36 +50,36 @@ public class OrcItm implements Serializable {
 	private BigDecimal orcItm_Encargos;
 
 	@Column(name="OrcItm_Frete")
-	private BigDecimal orcItm_Frete;
+	private BigDecimal orcItm_Frete;*/
 
 	@Column(name="orcitm_grupo")
 	private Integer orcitmGrupo;
 
-	@Column(name="OrcItm_IPI")
-	private BigDecimal orcItm_IPI;
+	/*@Column(name="OrcItm_IPI")
+	private BigDecimal orcItm_IPI;*/
 
 	@Column(name="orcitm_item")
 	private String orcitmItem;
 
-	@Column(name="orcitm_largura")
+	/*@Column(name="orcitm_largura")
 	private BigDecimal orcitmLargura;
 
 	@Column(name="OrcItm_Preco_Lista")
 	private BigDecimal orcItm_Preco_Lista;
 
 	@Column(name="OrcItm_Preco_Lista_Sem")
-	private BigDecimal orcItm_Preco_Lista_Sem;
+	private BigDecimal orcItm_Preco_Lista_Sem;*/
 
 	@Column(name="orcitm_qtde")
 	private Double orcitmQtde;
 
-	@Column(name="ORCITM_REFERENCIA")
-	private String orcitmReferencia;
+	/*@Column(name="ORCITM_REFERENCIA")
+	private String orcitmReferencia;*/
 
 	@Column(name="orcitm_subgrupo")
 	private String orcitmSubgrupo;
 
-	@Column(name="orcitm_suprimir_itens")
+	/*@Column(name="orcitm_suprimir_itens")
 	private Boolean orcitmSuprimirItens;
 
 	@Column(name="ORCITM_TOTAL")
@@ -101,7 +101,7 @@ public class OrcItm implements Serializable {
 	private String propostaImagem;
 
 	@Column(name="proposta_ordem")
-	private Integer propostaOrdem;
+	private Integer propostaOrdem;*/
 
 	@Column(name="proposta_texto_base")
 	private String propostaTextoBase;
@@ -146,7 +146,7 @@ public class OrcItm implements Serializable {
 		this.numeroOrcamento = numeroOrcamento.trim();
 	}
 
-	public BigDecimal getOrcitmAltura() {
+	/*public BigDecimal getOrcitmAltura() {
 		return this.orcitmAltura;
 	}
 
@@ -208,7 +208,7 @@ public class OrcItm implements Serializable {
 
 	public void setOrcItm_Frete(BigDecimal orcItm_Frete) {
 		this.orcItm_Frete = orcItm_Frete;
-	}
+	}*/
 
 	public Integer getOrcitmGrupo() {
 		return this.orcitmGrupo;
@@ -218,13 +218,13 @@ public class OrcItm implements Serializable {
 		this.orcitmGrupo = orcitmGrupo;
 	}
 
-	public BigDecimal getOrcItm_IPI() {
+	/*public BigDecimal getOrcItm_IPI() {
 		return this.orcItm_IPI;
 	}
 
 	public void setOrcItm_IPI(BigDecimal orcItm_IPI) {
 		this.orcItm_IPI = orcItm_IPI;
-	}
+	}*/
 
 	public String getOrcitmItem() {
 		return this.orcitmItem.trim().toUpperCase();
@@ -234,7 +234,7 @@ public class OrcItm implements Serializable {
 		this.orcitmItem = orcitmItem.trim().toUpperCase();
 	}
 
-	public BigDecimal getOrcitmLargura() {
+	/*public BigDecimal getOrcitmLargura() {
 		return this.orcitmLargura;
 	}
 
@@ -256,7 +256,7 @@ public class OrcItm implements Serializable {
 
 	public void setOrcItm_Preco_Lista_Sem(BigDecimal orcItm_Preco_Lista_Sem) {
 		this.orcItm_Preco_Lista_Sem = orcItm_Preco_Lista_Sem;
-	}
+	}*/
 
 	public Double getOrcitmQtde() {
 		return this.orcitmQtde;
@@ -266,13 +266,13 @@ public class OrcItm implements Serializable {
 		this.orcitmQtde = orcitmQtde;
 	}
 
-	public String getOrcitmReferencia() {
+	/*public String getOrcitmReferencia() {
 		return this.orcitmReferencia;
 	}
 
 	public void setOrcitmReferencia(String orcitmReferencia) {
 		this.orcitmReferencia = orcitmReferencia;
-	}
+	}*/
 
 	public String getOrcitmSubgrupo() {
 		return this.orcitmSubgrupo.trim().toUpperCase();
@@ -282,7 +282,7 @@ public class OrcItm implements Serializable {
 		this.orcitmSubgrupo = orcitmSubgrupo.trim().toUpperCase();
 	}
 
-	public Boolean getOrcitmSuprimirItens() {
+	/*public Boolean getOrcitmSuprimirItens() {
 		return this.orcitmSuprimirItens;
 	}
 
@@ -344,7 +344,7 @@ public class OrcItm implements Serializable {
 
 	public void setPropostaOrdem(Integer propostaOrdem) {
 		this.propostaOrdem = propostaOrdem;
-	}
+	}*/
 
 	public String getPropostaTextoBase() {
 		return this.propostaTextoBase;

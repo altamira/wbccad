@@ -25,7 +25,7 @@ public class OrcMat implements Serializable {
 	@EmbeddedId
 	private OrcMatPK id;
 
-	@Column(name="COFINSFATOR")
+	/*@Column(name="COFINSFATOR")
 	private BigDecimal cofinsfator;
 
 	@Column(name="COMISSAO_FATOR")
@@ -77,7 +77,7 @@ public class OrcMat implements Serializable {
 	private BigDecimal montagemValor;
 
 	@Column(name="NATUREZA")
-	private String natureza;
+	private String natureza;*/
 
 	@Column(name="orcmat_codigo")
 	private String orcmatCodigo;
@@ -91,14 +91,14 @@ public class OrcMat implements Serializable {
 	@Column(name="orcmat_descricao")
 	private String orcmatDescricao;
 
-	@Column(name="ORCMAT_FORNECEDOR")
+	/*@Column(name="ORCMAT_FORNECEDOR")
 	private String orcmatFornecedor;
 
 	@Column(name="ORCMAT_IDMDESCRICAO")
 	private String orcmatIdmdescricao;
 
 	@Column(name="ORCMAT_IDMUNIDADE")
-	private String orcmatIdmunidade;
+	private String orcmatIdmunidade;*/
 
 	@Column(name="orcmat_peso")
 	private BigDecimal orcmatPeso;
@@ -109,7 +109,7 @@ public class OrcMat implements Serializable {
 	@Column(name="ORCMAT_PRC_COMPRIMENTO")
 	private Integer orcmatPrcComprimento;
 
-	@Column(name="ORCMAT_PRC_FORMULA")
+	/*@Column(name="ORCMAT_PRC_FORMULA")
 	private Integer orcmatPrcFormula;
 
 	@Column(name="ORCMAT_PRC_LARGURA")
@@ -128,12 +128,12 @@ public class OrcMat implements Serializable {
 	private BigDecimal orcmatPrecoListaSem;
 
 	@Column(name="ORCMAT_PRECO_TAB")
-	private BigDecimal orcmatPrecoTab;
+	private BigDecimal orcmatPrecoTab;*/
 
 	@Column(name="orcmat_qtde")
 	private double orcmatQtde;
 
-	@Column(name="ORCMAT_SEMCENTAVOS")
+	/*@Column(name="ORCMAT_SEMCENTAVOS")
 	private Boolean orcmatSemcentavos;
 
 	@Column(name="ORCMATALTURA")
@@ -142,29 +142,29 @@ public class OrcMat implements Serializable {
 	private String orcmatbase;
 
 	@Column(name="ORCMATCOMPRIMENTO")
-	private double orcmatcomprimento;
+	private double orcmatcomprimento;*/
 
 	@Column(name="OrcMatCorPesquisa")
 	private String orcMatCorPesquisa;
 
-	@Column(name="ORCMATDESCONTO")
-	private BigDecimal orcmatdesconto;
+	/*@Column(name="ORCMATDESCONTO")
+	private BigDecimal orcmatdesconto;*/
 
 	@Column(name="OrcMatGrupo")
 	private Integer orcMatGrupo;
 
-	@Column(name="ORCMATLARGURA")
+	/*@Column(name="ORCMATLARGURA")
 	private double orcmatlargura;
 
 	private String orcmatlista;
 
 	@Column(name="ORCMATSITUACAO")
-	private String orcmatsituacao;
+	private String orcmatsituacao;*/
 
 	@Column(name="OrcMatSubGrupo")
 	private String orcMatSubGrupo;
 
-	@Column(name="PISCOFINSFATOR")
+	/*@Column(name="PISCOFINSFATOR")
 	private BigDecimal piscofinsfator;
 
 	@Column(name="PISCOFINSVALOR")
@@ -183,7 +183,7 @@ public class OrcMat implements Serializable {
 	private BigDecimal repasseCalculo;
 
 	@Column(name="ROYALTIES_CALCULO")
-	private BigDecimal royaltiesCalculo;
+	private BigDecimal royaltiesCalculo;*/
 
 	@OneToOne
 	@Transient
@@ -227,7 +227,7 @@ public class OrcMat implements Serializable {
 		this.orcmatCodigo = orcmatCodigo;
 		this.orcmatDescricao = orcmatDescricao;
 		this.orcmatPeso = orcmatPeso;
-		this.orcmatPreco = orcmatPreco;
+		//this.orcmatPreco = orcmatPreco;
 		this.orcmatQtde = orcmatQtde;
 		this.orcMatCorPesquisa = orcMatCorPesquisa;
 		this.orcMatGrupo = orcMatGrupo;
@@ -242,7 +242,7 @@ public class OrcMat implements Serializable {
 		this.id = id;
 	}
 
-	public BigDecimal getCofinsfator() {
+	/*public BigDecimal getCofinsfator() {
 		return this.cofinsfator;
 	}
 
@@ -384,7 +384,7 @@ public class OrcMat implements Serializable {
 
 	public void setNatureza(String natureza) {
 		this.natureza = natureza;
-	}
+	}*/
 
 	public String getOrcmatCodigo() {
 		return this.orcmatCodigo.trim().toUpperCase();
@@ -418,7 +418,7 @@ public class OrcMat implements Serializable {
 		this.orcmatDescricao = orcmatDescricao.trim().toUpperCase();
 	}
 
-	public String getOrcmatFornecedor() {
+	/*public String getOrcmatFornecedor() {
 		return this.orcmatFornecedor;
 	}
 
@@ -440,7 +440,7 @@ public class OrcMat implements Serializable {
 
 	public void setOrcmatIdmunidade(String orcmatIdmunidade) {
 		this.orcmatIdmunidade = orcmatIdmunidade;
-	}
+	}*/
 
 	public BigDecimal getOrcmatPeso() {
 		return this.orcmatPeso;
@@ -466,7 +466,7 @@ public class OrcMat implements Serializable {
 		this.orcmatPrcComprimento = orcmatPrcComprimento;
 	}
 
-	public Integer getOrcmatPrcFormula() {
+	/*public Integer getOrcmatPrcFormula() {
 		return this.orcmatPrcFormula;
 	}
 
@@ -520,7 +520,7 @@ public class OrcMat implements Serializable {
 
 	public void setOrcmatPrecoTab(BigDecimal orcmatPrecoTab) {
 		this.orcmatPrecoTab = orcmatPrecoTab;
-	}
+	}*/
 
 	public double getOrcmatQtde() {
 		return this.orcmatQtde;
@@ -530,7 +530,7 @@ public class OrcMat implements Serializable {
 		this.orcmatQtde = orcmatQtde;
 	}
 
-	public Boolean getOrcmatSemcentavos() {
+	/*public Boolean getOrcmatSemcentavos() {
 		return this.orcmatSemcentavos;
 	}
 
@@ -560,7 +560,7 @@ public class OrcMat implements Serializable {
 
 	public void setOrcmatcomprimento(double orcmatcomprimento) {
 		this.orcmatcomprimento = orcmatcomprimento;
-	}
+	}*/
 
 	public String getOrcMatCorPesquisa() {
 		return this.orcMatCorPesquisa;
@@ -570,13 +570,13 @@ public class OrcMat implements Serializable {
 		this.orcMatCorPesquisa = orcMatCorPesquisa;
 	}
 
-	public BigDecimal getOrcmatdesconto() {
+	/*public BigDecimal getOrcmatdesconto() {
 		return this.orcmatdesconto;
 	}
 
 	public void setOrcmatdesconto(BigDecimal orcmatdesconto) {
 		this.orcmatdesconto = orcmatdesconto;
-	}
+	}*/
 
 	public Integer getOrcMatGrupo() {
 		return this.orcMatGrupo;
@@ -586,7 +586,7 @@ public class OrcMat implements Serializable {
 		this.orcMatGrupo = orcMatGrupo;
 	}
 
-	public double getOrcmatlargura() {
+	/*public double getOrcmatlargura() {
 		return this.orcmatlargura;
 	}
 
@@ -608,7 +608,7 @@ public class OrcMat implements Serializable {
 
 	public void setOrcmatsituacao(String orcmatsituacao) {
 		this.orcmatsituacao = orcmatsituacao;
-	}
+	}*/
 
 	public String getOrcMatSubGrupo() {
 		return this.orcMatSubGrupo;
@@ -618,7 +618,7 @@ public class OrcMat implements Serializable {
 		this.orcMatSubGrupo = orcMatSubGrupo;
 	}
 
-	public BigDecimal getPiscofinsfator() {
+	/*public BigDecimal getPiscofinsfator() {
 		return this.piscofinsfator;
 	}
 
@@ -672,7 +672,7 @@ public class OrcMat implements Serializable {
 
 	public void setRoyaltiesCalculo(BigDecimal royaltiesCalculo) {
 		this.royaltiesCalculo = royaltiesCalculo;
-	}
+	}*/
 
 	public Prdorc getPrdorc() {
 		return prdorc;
@@ -717,8 +717,7 @@ public class OrcMat implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime
-				* result
+		result = prime * result
 				+ ((orcMatCorPesquisa == null) ? 0 : orcMatCorPesquisa.hashCode());
 		result = prime * result
 				+ ((orcMatGrupo == null) ? 0 : orcMatGrupo.hashCode());
@@ -734,8 +733,8 @@ public class OrcMat implements Serializable {
 				+ ((orcmatDescricao == null) ? 0 : orcmatDescricao.hashCode());
 		result = prime * result
 				+ ((orcmatPeso == null) ? 0 : orcmatPeso.hashCode());
-		result = prime * result
-				+ ((orcmatPreco == null) ? 0 : orcmatPreco.hashCode());
+		/*result = prime * result
+				+ ((orcmatPreco == null) ? 0 : orcmatPreco.hashCode());*/
 		long temp;
 		temp = Double.doubleToLongBits(orcmatQtde);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -791,11 +790,11 @@ public class OrcMat implements Serializable {
 				return false;
 		} else if (!orcmatPeso.equals(other.orcmatPeso))
 			return false;
-		if (orcmatPreco == null) {
+		/*if (orcmatPreco == null) {
 			if (other.orcmatPreco != null)
 				return false;
 		} else if (!orcmatPreco.equals(other.orcmatPreco))
-			return false;
+			return false;*/
 		if (Double.doubleToLongBits(orcmatQtde) != Double
 				.doubleToLongBits(other.orcmatQtde))
 			return false;

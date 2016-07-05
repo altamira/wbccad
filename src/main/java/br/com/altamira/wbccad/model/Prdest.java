@@ -22,7 +22,7 @@ public class Prdest implements Serializable {
 	@EmbeddedId
 	private PrdestPK id;
 	
-	@Column(name="ALTURA")
+	/*@Column(name="ALTURA")
 	private String altura;
 
 	@Column(name="ATUALIZADOEM")
@@ -50,12 +50,12 @@ public class Prdest implements Serializable {
 	private String prdestFormulaMultiplicar;
 
 	@Column(name="PRDEST_FORMULA_PROFUNDIDADE")
-	private String prdestFormulaProfundidade;
+	private String prdestFormulaProfundidade;*/
 
 	@Column(name="PRDEST_PESO")
 	private String prdestPeso;
 
-	@Column(name="PRDEST_PESO_ALTURA")
+	/*@Column(name="PRDEST_PESO_ALTURA")
 	private String prdestPesoAltura;
 
 	@Column(name="PRDEST_PESO_COMPRIMENTO")
@@ -65,12 +65,12 @@ public class Prdest implements Serializable {
 	private String prdestPesoFixo;
 
 	@Column(name="PRDEST_PESO_PROFUNDIDADE")
-	private String prdestPesoProfundidade;
+	private String prdestPesoProfundidade;*/
 
 	@Column(name="PRDEST_QTDE")
 	private String prdestQtde;
 
-	@Column(name="PRDESTCONDICAO")
+	/*@Column(name="PRDESTCONDICAO")
 	private String prdestcondicao;
 
 	@Column(name="PRDESTDEPARA")
@@ -84,7 +84,7 @@ public class Prdest implements Serializable {
 
 
 	@Column(name="PROFUNDIDADE")
-	private String profundidade;
+	private String profundidade;*/
 
 	// Prdorc codigo filho
 	@Transient
@@ -101,7 +101,7 @@ public class Prdest implements Serializable {
 		this.id = id;
 	}
 
-	public String getAltura() {
+	/*public String getAltura() {
 		return this.altura;
 	}
 
@@ -179,7 +179,7 @@ public class Prdest implements Serializable {
 
 	public void setPrdestFormulaProfundidade(String prdestFormulaProfundidade) {
 		this.prdestFormulaProfundidade = prdestFormulaProfundidade;
-	}
+	}*/
 
 	public String getPrdestPeso() {
 		return this.prdestPeso;
@@ -189,7 +189,7 @@ public class Prdest implements Serializable {
 		this.prdestPeso = prdestPeso;
 	}
 
-	public String getPrdestPesoAltura() {
+	/*public String getPrdestPesoAltura() {
 		return this.prdestPesoAltura;
 	}
 
@@ -219,7 +219,7 @@ public class Prdest implements Serializable {
 
 	public void setPrdestPesoProfundidade(String prdestPesoProfundidade) {
 		this.prdestPesoProfundidade = prdestPesoProfundidade;
-	}
+	}*/
 
 	public String getPrdestQtde() {
 		return this.prdestQtde;
@@ -229,7 +229,7 @@ public class Prdest implements Serializable {
 		this.prdestQtde = prdestQtde;
 	}
 
-	public String getPrdestcondicao() {
+	/*public String getPrdestcondicao() {
 		return this.prdestcondicao;
 	}
 
@@ -267,7 +267,7 @@ public class Prdest implements Serializable {
 
 	public void setProfundidade(String profundidade) {
 		this.profundidade = profundidade;
-	}
+	}*/
 
 	public Prdorc getPrdorc() {
 		return prdorc;

@@ -30,7 +30,7 @@ public class Prdorc implements Serializable {
 	@Column(name="Produto")
 	private String produto;
 
-	@Column(name="Altura")
+	/*@Column(name="Altura")
 	private Double altura;
 
 	@Column(name="ATUALIZADOEM")
@@ -39,7 +39,7 @@ public class Prdorc implements Serializable {
 	private String codigointegracao;
 
 	@Column(name="Comprimento")
-	private Integer comprimento;
+	private Integer comprimento;*/
 
 	@Column(name="Cor_padrao")
 	private String cor_padrao;
@@ -47,7 +47,7 @@ public class Prdorc implements Serializable {
 	@Column(name="Descricao")
 	private String descricao;
 
-	@Column(name="Familia")
+	/*@Column(name="Familia")
 	private String familia;
 
 	@Column(name="IMPORTADOEM")
@@ -149,7 +149,7 @@ public class Prdorc implements Serializable {
 	private String unidade;
 
 	@Column(name="utilizar_medidas_originais")
-	private Boolean utilizarMedidasOriginais;
+	private Boolean utilizarMedidasOriginais;*/
 	
 	@Transient
 	private int ref;
@@ -167,7 +167,7 @@ public class Prdorc implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public Double getAltura() {
+	/*public Double getAltura() {
 		return this.altura;
 	}
 
@@ -197,7 +197,7 @@ public class Prdorc implements Serializable {
 
 	public void setComprimento(Integer comprimento) {
 		this.comprimento = comprimento;
-	}
+	}*/
 
 	public String getCor_padrao() {
 		return this.cor_padrao;
@@ -215,7 +215,7 @@ public class Prdorc implements Serializable {
 		this.descricao = descricao.trim().toUpperCase();
 	}
 
-	public String getFamilia() {
+	/*public String getFamilia() {
 		return this.familia;
 	}
 
@@ -461,7 +461,7 @@ public class Prdorc implements Serializable {
 
 	public void setPreco(Double preco) {
 		this.preco = preco;
-	}
+	}*/
 
 	public String getProduto() {
 		return this.produto.trim().toUpperCase();
@@ -471,7 +471,7 @@ public class Prdorc implements Serializable {
 		this.produto = produto.trim().toUpperCase();
 	}
 
-	public String getSituacao() {
+	/*public String getSituacao() {
 		return this.situacao;
 	}
 
@@ -501,7 +501,7 @@ public class Prdorc implements Serializable {
 
 	public void setUtilizarMedidasOriginais(Boolean utilizarMedidasOriginais) {
 		this.utilizarMedidasOriginais = utilizarMedidasOriginais;
-	}
+	}*/
 
 	public List<Prdest> getPrdest() {
 		return prdest;

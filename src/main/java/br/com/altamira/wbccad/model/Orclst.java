@@ -43,7 +43,7 @@ public class Orclst implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date orclstEmissao;
     
-    @Column(name = "orclst_contato", length = 2147483647)
+    /*@Column(name = "orclst_contato", length = 2147483647)
     private String orclstContato;
     
     @Column(name = "orclst_loja", length = 50)
@@ -71,20 +71,20 @@ public class Orclst implements Serializable {
     private String orclstNrOrcVnd;
     
     @Column(name = "orclst_lista", length = 20)
-    private String orclstLista;
+    private String orclstLista;*/
     
     @Column(name = "orclst_revisao", length = 1)
     private String orclstRevisao;
     
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "orclst_total", precision = 53)
+    /*@Column(name = "orclst_total", precision = 53)
     private Double orclstTotal;
     
     @Column(name = "orclst_nova_reforma", length = 1)
     private String orclstNovaReforma;
     
     @Column(name = "orclst_versao_dat", length = 10)
-    private String orclstVersaoDat;
+    private String orclstVersaoDat;*/
     
     @Column(name = "orclst_cli_codigo")
     private Integer orclstCliCodigo;
@@ -92,7 +92,7 @@ public class Orclst implements Serializable {
     @Column(name = "orclst_cli_nome", length = 50)
     private String orclstCliNome;
     
-    @Column(name = "orclst_cli_cgc_cpf", length = 18)
+    /*@Column(name = "orclst_cli_cgc_cpf", length = 18)
     private String orclstCliCgcCpf;
     
     @Column(name = "orclst_cli_end_especie", length = 4)
@@ -114,7 +114,7 @@ public class Orclst implements Serializable {
     private String orclstCliEndComplemento;
     
     @Column(name = "orclst_cli_bmp", length = 255)
-    private String orclstCliBmp;
+    private String orclstCliBmp;*/
     
     @Column(name = "orclst_data_status")
     @Temporal(TemporalType.TIMESTAMP)
@@ -123,7 +123,7 @@ public class Orclst implements Serializable {
     @Column(name = "orclst_revisao_orc", length = 1)
     private String orclstRevisaoOrc;
     
-    @Column(name = "orclst_temperatura")
+    /*@Column(name = "orclst_temperatura")
     private Integer orclstTemperatura;
     
     @Column(name = "orclst_motivo", length = 40)
@@ -200,7 +200,7 @@ public class Orclst implements Serializable {
     private String orclstProjetista;
     
     @Column(name = "ORCLST_ORCAMENTISTA", length = 50)
-    private String orclstOrcamentista;
+    private String orclstOrcamentista;*/
     
     @Basic(optional = false)
     @Column(nullable = false)
@@ -257,7 +257,7 @@ public class Orclst implements Serializable {
         this.orclstEmissao = orclstEmissao;
     }
 
-    public String getOrclstContato() {
+    /*public String getOrclstContato() {
         return orclstContato;
     }
 
@@ -335,7 +335,7 @@ public class Orclst implements Serializable {
 
     public void setOrclstLista(String orclstLista) {
         this.orclstLista = orclstLista;
-    }
+    }*/
 
     public String getOrclstRevisao() {
         return orclstRevisao == null ? "" : orclstRevisao.trim();
@@ -345,7 +345,7 @@ public class Orclst implements Serializable {
         this.orclstRevisao = orclstRevisao == null ? "" : orclstRevisao.trim();
     }
 
-    public Double getOrclstTotal() {
+    /*public Double getOrclstTotal() {
         return orclstTotal;
     }
 
@@ -367,7 +367,7 @@ public class Orclst implements Serializable {
 
     public void setOrclstVersaoDat(String orclstVersaoDat) {
         this.orclstVersaoDat = orclstVersaoDat;
-    }
+    }*/
 
     public Integer getOrclstCliCodigo() {
         return orclstCliCodigo;
@@ -385,7 +385,7 @@ public class Orclst implements Serializable {
         this.orclstCliNome = orclstCliNome;
     }
 
-    public String getOrclstCliCgcCpf() {
+    /*public String getOrclstCliCgcCpf() {
         return orclstCliCgcCpf;
     }
 
@@ -447,7 +447,7 @@ public class Orclst implements Serializable {
 
     public void setOrclstCliBmp(String orclstCliBmp) {
         this.orclstCliBmp = orclstCliBmp;
-    }
+    }*/
 
     public Date getOrclstDataStatus() {
         return orclstDataStatus;
@@ -465,7 +465,7 @@ public class Orclst implements Serializable {
         this.orclstRevisaoOrc = orclstRevisaoOrc;
     }
 
-    public Integer getOrclstTemperatura() {
+    /*public Integer getOrclstTemperatura() {
         return orclstTemperatura;
     }
 
@@ -663,7 +663,7 @@ public class Orclst implements Serializable {
 
     public void setOrclstOrcamentista(String orclstOrcamentista) {
         this.orclstOrcamentista = orclstOrcamentista;
-    }
+    }*/
 
     public int getIdOrcLst() {
         return idOrcLst;

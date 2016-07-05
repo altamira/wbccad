@@ -29,7 +29,7 @@ public class Orccab implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String numeroOrcamento;
 
-	@Column(name="BANDEIRA")
+	/*@Column(name="BANDEIRA")
 	private String bandeira;
 
 	@Column(name="COMISSAO_FATOR")
@@ -58,11 +58,11 @@ public class Orccab implements Serializable {
 	private boolean orccabBloqueado;
 
 	@Column(name="orccab_bloquear_icad")
-	private boolean orccabBloquearIcad;
+	private boolean orccabBloquearIcad;*/
 
 	private Timestamp orccab_Cadastro;
 
-	@Column(name="orccab_caminho_dwg")
+	/*@Column(name="orccab_caminho_dwg")
 	private String orccabCaminhoDwg;
 
 	@Column(name="orccab_chave")
@@ -101,14 +101,14 @@ public class Orccab implements Serializable {
 	@Column(name="orccab_cliente_cb_utilizar")
 	private boolean orccabClienteCbUtilizar;
 
-	private String orccab_cliente_CGC_cpf;
+	private String orccab_cliente_CGC_cpf;*/
 
 	private Integer orccab_cliente_Codigo;
 
 	@Column(name="orccab_cliente_codinome")
 	private String orccabClienteCodinome;
 
-	@Column(name="orccab_cliente_end_bairro")
+	/*@Column(name="orccab_cliente_end_bairro")
 	private String orccabClienteEndBairro;
 
 	@Column(name="orccab_cliente_end_cep")
@@ -154,11 +154,11 @@ public class Orccab implements Serializable {
 	private String orccabClienteEtUf;
 
 	@Column(name="orccab_cliente_et_utilizar")
-	private boolean orccabClienteEtUtilizar;
+	private boolean orccabClienteEtUtilizar;*/
 
 	private String orccab_cliente_Nome;
 
-	@Column(name="orccab_contato")
+	/*@Column(name="orccab_contato")
 	private String orccabContato;
 
 	@Column(name="ORCCAB_CONTATO_EMAIL")
@@ -181,12 +181,12 @@ public class Orccab implements Serializable {
 	private BigDecimal orccabDiferencaValor;
 
 	@Column(name="OrcCab_email")
-	private Integer orcCab_email;
+	private Integer orcCab_email;*/
 
 	@Column(name="orccab_emissao")
 	private Timestamp orccabEmissao;
 
-	@Column(name="orccab_encargos_perc")
+	/*@Column(name="orccab_encargos_perc")
 	private BigDecimal orccabEncargosPerc;
 
 	@Column(name="orccab_encargos_valor")
@@ -382,7 +382,7 @@ public class Orccab implements Serializable {
 	private Integer qtdeAlteradas;
 
 	@Column(name="TipoVenda")
-	private String tipoVenda;
+	private String tipoVenda;*/
 
 	@Transient
 	private Orclst orclst;
@@ -418,7 +418,7 @@ public class Orccab implements Serializable {
 		this.numeroOrcamento = numeroOrcamento.trim();
 	}
 
-	public String getBandeira() {
+	/*public String getBandeira() {
 		return this.bandeira;
 	}
 
@@ -512,7 +512,7 @@ public class Orccab implements Serializable {
 
 	public void setOrccabBloquearIcad(boolean orccabBloquearIcad) {
 		this.orccabBloquearIcad = orccabBloquearIcad;
-	}
+	}*/
 
 	public Timestamp getOrccab_Cadastro() {
 		return this.orccab_Cadastro;
@@ -522,7 +522,7 @@ public class Orccab implements Serializable {
 		this.orccab_Cadastro = orccab_Cadastro;
 	}
 
-	public String getOrccabCaminhoDwg() {
+	/*public String getOrccabCaminhoDwg() {
 		return this.orccabCaminhoDwg;
 	}
 
@@ -632,7 +632,7 @@ public class Orccab implements Serializable {
 
 	public void setOrccab_cliente_CGC_cpf(String orccab_cliente_CGC_cpf) {
 		this.orccab_cliente_CGC_cpf = orccab_cliente_CGC_cpf;
-	}
+	}*/
 
 	public Integer getOrccab_cliente_Codigo() {
 		return this.orccab_cliente_Codigo;
@@ -650,7 +650,7 @@ public class Orccab implements Serializable {
 		this.orccabClienteCodinome = orccabClienteCodinome;
 	}
 
-	public String getOrccabClienteEndBairro() {
+	/*public String getOrccabClienteEndBairro() {
 		return this.orccabClienteEndBairro;
 	}
 
@@ -776,7 +776,7 @@ public class Orccab implements Serializable {
 
 	public void setOrccabClienteEtUtilizar(boolean orccabClienteEtUtilizar) {
 		this.orccabClienteEtUtilizar = orccabClienteEtUtilizar;
-	}
+	}*/
 
 	public String getOrccab_cliente_Nome() {
 		return this.orccab_cliente_Nome;
@@ -786,7 +786,7 @@ public class Orccab implements Serializable {
 		this.orccab_cliente_Nome = orccab_cliente_Nome;
 	}
 
-	public String getOrccabContato() {
+	/*public String getOrccabContato() {
 		return this.orccabContato;
 	}
 
@@ -840,9 +840,9 @@ public class Orccab implements Serializable {
 
 	public void setOrcCab_Diferenca(BigDecimal orcCab_Diferenca) {
 		this.orcCab_Diferenca = orcCab_Diferenca;
-	}
+	}*/
 
-	public BigDecimal getOrccabDiferencaValor() {
+	/*public BigDecimal getOrccabDiferencaValor() {
 		return this.orccabDiferencaValor;
 	}
 
@@ -856,7 +856,7 @@ public class Orccab implements Serializable {
 
 	public void setOrcCab_email(Integer orcCab_email) {
 		this.orcCab_email = orcCab_email;
-	}
+	}*/
 
 	public Timestamp getOrccabEmissao() {
 		return this.orccabEmissao;
@@ -866,7 +866,7 @@ public class Orccab implements Serializable {
 		this.orccabEmissao = orccabEmissao;
 	}
 
-	public BigDecimal getOrccabEncargosPerc() {
+	/*public BigDecimal getOrccabEncargosPerc() {
 		return this.orccabEncargosPerc;
 	}
 
@@ -1408,7 +1408,7 @@ public class Orccab implements Serializable {
 
 	public void setTipoVenda(String tipoVenda) {
 		this.tipoVenda = tipoVenda;
-	}
+	}*/
 
 	public Orclst getOrclst() {
 		return orclst;
