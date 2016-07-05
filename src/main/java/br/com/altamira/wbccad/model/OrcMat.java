@@ -704,15 +704,41 @@ public class OrcMat implements Serializable {
 		}
 		return buf.toString();
 	}
+	
+	public static <T> boolean hasDuplicate(Iterable<T> all) {
+	    Set<T> set = new HashSet<T>();
+	    // Set#add returns false if the set does not change, which
+	    // indicates that a duplicate element has been added.
+	    for (T each: all) if (!set.add(each)) return true;
+	    return false;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime
+				* result
+				+ ((orcMatCorPesquisa == null) ? 0 : orcMatCorPesquisa.hashCode());
+		result = prime * result
+				+ ((orcMatGrupo == null) ? 0 : orcMatGrupo.hashCode());
+		result = prime * result
+				+ ((orcMatSubGrupo == null) ? 0 : orcMatSubGrupo.hashCode());
 		result = prime * result
 				+ ((orcmatCodigo == null) ? 0 : orcmatCodigo.hashCode());
 		result = prime * result
+				+ ((orcmatCodigoPai == null) ? 0 : orcmatCodigoPai.hashCode());
+		result = prime * result
+				+ ((orcmatCor == null) ? 0 : orcmatCor.hashCode());
+		result = prime * result
 				+ ((orcmatDescricao == null) ? 0 : orcmatDescricao.hashCode());
+		result = prime * result
+				+ ((orcmatPeso == null) ? 0 : orcmatPeso.hashCode());
+		result = prime * result
+				+ ((orcmatPreco == null) ? 0 : orcmatPreco.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(orcmatQtde);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -725,44 +751,55 @@ public class OrcMat implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		OrcMat other = (OrcMat) obj;
+		if (orcMatCorPesquisa == null) {
+			if (other.orcMatCorPesquisa != null)
+				return false;
+		} else if (!orcMatCorPesquisa.equals(other.orcMatCorPesquisa))
+			return false;
+		if (orcMatGrupo == null) {
+			if (other.orcMatGrupo != null)
+				return false;
+		} else if (!orcMatGrupo.equals(other.orcMatGrupo))
+			return false;
+		if (orcMatSubGrupo == null) {
+			if (other.orcMatSubGrupo != null)
+				return false;
+		} else if (!orcMatSubGrupo.equals(other.orcMatSubGrupo))
+			return false;
 		if (orcmatCodigo == null) {
 			if (other.orcmatCodigo != null)
 				return false;
 		} else if (!orcmatCodigo.equals(other.orcmatCodigo))
 			return false;
-		if (orcmatDescricao == null) {
-			if (other.orcmatDescricao != null)
+		if (orcmatCodigoPai == null) {
+			if (other.orcmatCodigoPai != null)
 				return false;
-		} else if (!orcmatDescricao.equals(other.orcmatDescricao))
+		} else if (!orcmatCodigoPai.equals(other.orcmatCodigoPai))
 			return false;
 		if (orcmatCor == null) {
 			if (other.orcmatCor != null)
 				return false;
 		} else if (!orcmatCor.equals(other.orcmatCor))
 			return false;
-		if (orcMatCorPesquisa == null) {
-			if (other.orcMatCorPesquisa != null)
+		if (orcmatDescricao == null) {
+			if (other.orcmatDescricao != null)
 				return false;
-		} else if (!orcMatCorPesquisa.equals(other.orcMatCorPesquisa))
+		} else if (!orcmatDescricao.equals(other.orcmatDescricao))
 			return false;
-		if (orcmatQtde != other.orcmatQtde)
+		if (orcmatPeso == null) {
+			if (other.orcmatPeso != null)
+				return false;
+		} else if (!orcmatPeso.equals(other.orcmatPeso))
 			return false;
-		if (!orcmatPeso.equals(other.orcmatPeso)) 
+		if (orcmatPreco == null) {
+			if (other.orcmatPreco != null)
+				return false;
+		} else if (!orcmatPreco.equals(other.orcmatPreco))
 			return false;
-		if (!orcMatGrupo.equals(other.orcMatGrupo)) 
+		if (Double.doubleToLongBits(orcmatQtde) != Double
+				.doubleToLongBits(other.orcmatQtde))
 			return false;
-		if (!orcMatSubGrupo.equals(other.orcMatSubGrupo)) 
-			return false;
-		
 		return true;
-	}
-	
-	public static <T> boolean hasDuplicate(Iterable<T> all) {
-	    Set<T> set = new HashSet<T>();
-	    // Set#add returns false if the set does not change, which
-	    // indicates that a duplicate element has been added.
-	    for (T each: all) if (!set.add(each)) return true;
-	    return false;
 	}
 
 }

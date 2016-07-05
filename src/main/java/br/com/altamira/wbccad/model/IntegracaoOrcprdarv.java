@@ -25,8 +25,9 @@ public class IntegracaoOrcprdarv implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="[idIntegracao_OrcPrdArv]")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer idIntegracao_OrcPrdArv;
+	private Integer idIntegracao;
 
 	@Column(name="CORCOD")
 	private String corcod;
@@ -70,12 +71,12 @@ public class IntegracaoOrcprdarv implements Serializable {
 	public IntegracaoOrcprdarv() {
 	}
 
-	public Integer getIdIntegracao_OrcPrdArv() {
-		return this.idIntegracao_OrcPrdArv;
+	public Integer getIdIntegracao() {
+		return this.idIntegracao;
 	}
 
-	public void setIdIntegracao_OrcPrdArv(Integer idIntegracao_OrcPrdArv) {
-		this.idIntegracao_OrcPrdArv = idIntegracao_OrcPrdArv;
+	public void setIdIntegracao(Integer idIntegracao) {
+		this.idIntegracao = idIntegracao;
 	}
 
 	public String getCorcod() {

@@ -164,7 +164,8 @@ public class ApplicationTests {
 				//"00093277" // INCONSISTENCIA NOS DADOS: SUBGRUPO ESTA DIFERENTE NA TABELA INTEGRACAO_ORCITM 
 				//"00084239" // INTEGRACAO_ORCITM diferente
 				//"00092331" //: Produto não encontrado: PPLSIG18120L24000000 LONGARINA SG120 CH1,80 MM F240 MED.1200MM
-				"00093427" // Exception d != java.time.LocalDateTime
+				//"00093427" // Exception d != java.time.LocalDateTime
+				"00090555"
 				);
 		
     	numeros.stream().forEach((numero) -> {
@@ -230,7 +231,7 @@ public class ApplicationTests {
 				"00093277" // DIFERENCA NOS DADOS: SUBGRUPO ESTA DIFERENTE NA TABELA INTEGRACAO_ORCITM 
 				);
 		
-		Pageable top = new PageRequest(0, 100);
+		Pageable top = new PageRequest(0, 20);
 		Iterable<Orclst> range = orclstRepository.findAllByOrderByOrclstNumeroDesc(top);
 		
 		int maxPrdorc = 0;

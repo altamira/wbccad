@@ -91,7 +91,7 @@ public class OrcMatController {
 
 	public List<IntegracaoOrcprdarv> integracaoOrcprdarv(IntegracaoOrcprd orcprd) {
 		List<IntegracaoOrcprdarv> list = integracaoOrcprdarvRepository
-				.findByOrcnum(orcprd.getOrcnum());
+				.findAllByOrcnumOrderByIdIntegracaoAsc(orcprd.getOrcnum());
 
 		for (IntegracaoOrcprdarv orcprdarv : list) {
 			orcprdarv.setOrcprdarv(integracaoOrcprdarvFilho(orcprdarv, 1));
@@ -103,7 +103,7 @@ public class OrcMatController {
 	public List<IntegracaoOrcprdarv> integracaoOrcprdarvFilho(
 			IntegracaoOrcprdarv orcprdarvpai, Integer nivel) {
 		List<IntegracaoOrcprdarv> list = integracaoOrcprdarvRepository
-				.findByOrcnum(orcprdarvpai.getOrcnum());
+				.findAllByOrcnumOrderByIdIntegracaoAsc(orcprdarvpai.getOrcnum());
 		for (IntegracaoOrcprdarv orcprdarv : list) {
 			orcprdarv.setOrcprdarv(integracaoOrcprdarvFilho(orcprdarv,
 					nivel + 1));

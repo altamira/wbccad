@@ -161,6 +161,12 @@ public class Prdorc implements Serializable {
 	public Prdorc() {
 	}
 
+	public Prdorc(String produto, String descricao) {
+		super();
+		this.produto = produto;
+		this.descricao = descricao;
+	}
+
 	public Double getAltura() {
 		return this.altura;
 	}

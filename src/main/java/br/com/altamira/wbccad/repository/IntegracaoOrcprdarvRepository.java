@@ -11,5 +11,6 @@ import br.com.altamira.wbccad.model.*;
 @Repository
 @Transactional(readOnly = true)
 public interface IntegracaoOrcprdarvRepository extends CrudRepository<IntegracaoOrcprdarv, String> {
-	List<IntegracaoOrcprdarv> findByOrcnum(String orcamento);
+	
+	List<IntegracaoOrcprdarv> findAllByOrcnumOrderByIdIntegracaoAsc(String orcamento);
 }

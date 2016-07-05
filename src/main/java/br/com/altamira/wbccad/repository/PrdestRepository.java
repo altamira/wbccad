@@ -13,5 +13,6 @@ import br.com.altamira.wbccad.model.Prdest;
 public interface PrdestRepository extends CrudRepository<Prdest, String> {
 
 	List<Prdest> findAllByIdPrdorccodigopai(String codigo);
+	
 	List<Prdest> findAllByIdPrdorccodigofilho(String codigo);
 }

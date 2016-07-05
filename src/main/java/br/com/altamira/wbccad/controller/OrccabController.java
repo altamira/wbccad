@@ -2,6 +2,7 @@ package br.com.altamira.wbccad.controller;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -21,6 +22,7 @@ import br.com.altamira.wbccad.exception.PrdorcNotFoundException;
 import br.com.altamira.wbccad.model.IntegracaoOrccab;
 import br.com.altamira.wbccad.model.IntegracaoOrcitm;
 import br.com.altamira.wbccad.model.IntegracaoOrcprd;
+import br.com.altamira.wbccad.model.IntegracaoOrcprdarv;
 import br.com.altamira.wbccad.model.OrcDet;
 import br.com.altamira.wbccad.model.OrcItm;
 import br.com.altamira.wbccad.model.OrcMat;
@@ -31,6 +33,7 @@ import br.com.altamira.wbccad.model.Prdorc;
 import br.com.altamira.wbccad.repository.IntegracaoOrccabRepository;
 import br.com.altamira.wbccad.repository.IntegracaoOrcitmRepository;
 import br.com.altamira.wbccad.repository.IntegracaoOrcprdRepository;
+import br.com.altamira.wbccad.repository.IntegracaoOrcprdarvRepository;
 import br.com.altamira.wbccad.repository.OrcDetRepository;
 import br.com.altamira.wbccad.repository.OrcMatRepository;
 import br.com.altamira.wbccad.repository.OrccabRepository;
@@ -71,6 +74,9 @@ public class OrccabController {
 	
 	@Autowired
 	private IntegracaoOrcprdRepository integracaoOrcprdRepository;
+	
+	@Autowired
+	private IntegracaoOrcprdarvRepository integracaoOrcprdarvRepository;
 	
 	@JmsListener(destination = "/wbccad/orccab/v1/request")
 	@SendTo("/wbccad/orccab/v1/response")
@@ -247,8 +253,6 @@ public class OrccabController {
 				throw new OrccabNotFoundException(String.format("%s: Orçamento não encontrado na tabela INTEGRACAO_ORCCAB, Situacao: %d", numeroRevisao, orclst.getOrclstStatus()));
 			}
 			
-			//Assert.assertEquals(orclst.getOrclstNumero(), iorccab.getOrcnum());
-			
 			if (orccab.getOrcItm().size() > 0) {
 				List<IntegracaoOrcitm> integracaoOrcItm = integracaoOrcitmRepository.findByOrcnum(numero);
 				
@@ -311,6 +315,19 @@ public class OrccabController {
 					throw new OrcMatHasDifferenceException(String.format("%s: A lista de Material do Orcamento e diferente da lista de Material da tabela de INTEGRACAO_ORCPRD.", numeroRevisao));
 			}
 			
+			if (orccab.getPrdOrc().size() > 0) {
+				List<IntegracaoOrcprdarv> integracaoOrcprdarv = integracaoOrcprdarvRepository.findAllByOrcnumOrderByIdIntegracaoAsc(numero);
+				
+				if (integracaoOrcprdarv == null) {
+					throw new OrccabNotFoundException(String.format("%s: Arvore de produtos do orçamento não encontrado na tabela INTEGRACAO_ORCPRDARV.", numeroRevisao));
+				}
+				
+				Iterator<IntegracaoOrcprdarv> it = integracaoOrcprdarv.iterator();
+				
+				ComparePrdarv(numeroRevisao, 1, it, orccab.getPrdOrc().iterator());
+				
+			}
+			
 		}
 		
 		System.out.println(String.format("%s: Orcamento carregado.", numero));
@@ -319,6 +336,22 @@ public class OrccabController {
 		
 	}
 
+	private void ComparePrdarv(String orcnum, int nivel, Iterator<IntegracaoOrcprdarv> itIntegracaoOrcprdarv, Iterator<Prdorc> itPrdOrc) throws PrdorcNotFoundException {
+		while (itPrdOrc.hasNext() && itPrdOrc.hasNext()) {
+			IntegracaoOrcprdarv integracaoOrcprdarv = itIntegracaoOrcprdarv.next();
+			Prdorc prdorc = itPrdOrc.next();
+
+			if (integracaoOrcprdarv.getOrcprdarvNivel() > nivel) {
+				//ComparePrdarv(orcnum, nivel + 1, itIntegracaoOrcprdarv, prdorc.getPrdest().iterator());
+			} else {
+				Prdorc integracaoprdorc = new Prdorc(integracaoOrcprdarv.getPrdcod(), integracaoOrcprdarv.getPrddsc());
+				
+				if (!prdorc.equals(integracaoprdorc)) 
+					throw new PrdorcNotFoundException(String.format("%s: INTEGRACAO_ORCPRDARV, arvore de produtos é diferente.", orcnum));
+			}
+		}
+	}
+	
 	private List<Prdest> Prdest(Orccab orccab, Prdorc produtopai) throws Exception {
 		List<Prdest> list = null;
 		Prdorc prdorc = null;

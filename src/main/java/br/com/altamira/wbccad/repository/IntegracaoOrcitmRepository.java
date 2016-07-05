@@ -15,4 +15,5 @@ public interface IntegracaoOrcitmRepository extends CrudRepository<IntegracaoOrc
 	List<IntegracaoOrcitm> findByOrcnum(String orcamento);
 	
 	IntegracaoOrcitm findByOrcnumAndOrcitmAndGrpcodAndSubgrpcod(String orcamento, Integer item, Integer grupo, Integer subgrupo);
+	
 }
